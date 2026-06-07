@@ -32,6 +32,9 @@ API가 실행되면 다음 주소를 열 수 있습니다.
 uv run python -m sample_mcp.server
 ```
 
+MCP server calls the FastAPI app over HTTP. Start the API server first, or set
+`SAMPLE_API_BASE_URL` to the API server URL.
+
 MCP 클라이언트 설정 예시:
 
 ```json
