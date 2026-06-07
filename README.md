@@ -32,11 +32,11 @@ API가 실행되면 다음 주소를 열 수 있습니다.
 uv run python -m sample_mcp.server
 ```
 
-MCP server calls the FastAPI app over HTTP. Start the API server first, or set
-`SAMPLE_API_BASE_URL` to the API server URL.
+MCP 서버는 FastAPI 앱을 HTTP로 호출합니다. 먼저 API 서버를 실행하거나,
+`SAMPLE_API_BASE_URL` 환경변수에 API 서버 URL을 설정하세요.
 
-The MCP server reuses a lazy `httpx.AsyncClient` with connection pooling,
-keep-alive, and explicit timeout settings.
+MCP 서버는 lazy singleton 방식의 `httpx.AsyncClient`를 재사용하며,
+connection pool, keep-alive, 명시적인 timeout 설정을 사용합니다.
 
 MCP 클라이언트 설정 예시:
 
