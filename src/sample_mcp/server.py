@@ -4,7 +4,6 @@ from mcp.server.fastmcp import FastMCP
 
 from sample_api.store import store
 
-
 mcp = FastMCP("sample-api")
 
 
