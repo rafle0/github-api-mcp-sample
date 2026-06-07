@@ -12,15 +12,13 @@ Python으로 작성한 예시 HTTP API를 MCP(Model Context Protocol) 서버에�
 ## 설치
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -e ".[dev]"
+uv sync --dev
 ```
 
 ## API 실행
 
 ```powershell
-uvicorn sample_api.main:app --reload
+uv run uvicorn sample_api.main:app --reload
 ```
 
 API가 실행되면 다음 주소를 열 수 있습니다.
@@ -31,7 +29,7 @@ API가 실행되면 다음 주소를 열 수 있습니다.
 ## MCP 서버 실행
 
 ```powershell
-python -m sample_mcp.server
+uv run python -m sample_mcp.server
 ```
 
 MCP 클라이언트 설정 예시:
@@ -40,8 +38,8 @@ MCP 클라이언트 설정 예시:
 {
   "mcpServers": {
     "sample-api": {
-      "command": "python",
-      "args": ["-m", "sample_mcp.server"],
+      "command": "uv",
+      "args": ["run", "python", "-m", "sample_mcp.server"],
       "cwd": "/path/to/github-api-mcp-sample"
     }
   }
@@ -57,5 +55,5 @@ MCP 클라이언트 설정 예시:
 ## 테스트
 
 ```powershell
-pytest
+uv run pytest
 ```
