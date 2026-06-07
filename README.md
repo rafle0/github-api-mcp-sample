@@ -63,10 +63,3 @@ MCP 클라이언트 설정 예시:
 ```powershell
 uv run pytest
 ```
-
-## Code Quality
-
-```powershell
-uv run ruff check .
-uv run ruff format --check .
-```

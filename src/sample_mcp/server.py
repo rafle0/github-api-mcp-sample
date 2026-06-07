@@ -62,19 +62,35 @@ async def _request_json(
 
 @mcp.tool()
 async def list_items() -> list[dict[str, str | int]]:
-    """List all sample API items."""
+    """Retrieve every item currently stored by the sample HTTP API.
+
+    Use this tool when the user asks to browse, inspect, or summarize the
+    available sample items. It does not take any arguments. The result is a list
+    of item objects, each containing `id`, `name`, and `description`.
+    """
     return await _request_json("GET", "/items")
 
 
 @mcp.tool()
 async def get_item(item_id: int) -> dict[str, str | int]:
-    """Get one sample API item by id."""
+    """Retrieve one item from the sample HTTP API by numeric id.
+
+    Use this tool when the user asks for details about a specific item and
+    provides its `item_id`. The result contains the item's `id`, `name`, and
+    `description`. If the API cannot find the item, this tool raises an error
+    with the HTTP status and response body.
+    """
     return await _request_json("GET", f"/items/{item_id}")
 
 
 @mcp.tool()
 async def create_item(name: str, description: str) -> dict[str, str | int]:
-    """Create a sample API item."""
+    """Create a new item through the sample HTTP API.
+
+    Use this tool when the user wants to add a sample item. Provide a short
+    `name` and a human-readable `description`. The API validates both fields
+    and returns the created item with its generated numeric `id`.
+    """
     return await _request_json(
         "POST",
         "/items",
