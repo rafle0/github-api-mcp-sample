@@ -35,6 +35,9 @@ uv run python -m sample_mcp.server
 MCP server calls the FastAPI app over HTTP. Start the API server first, or set
 `SAMPLE_API_BASE_URL` to the API server URL.
 
+The MCP server reuses a lazy `httpx.AsyncClient` with connection pooling,
+keep-alive, and explicit timeout settings.
+
 MCP 클라이언트 설정 예시:
 
 ```json
